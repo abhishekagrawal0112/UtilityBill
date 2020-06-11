@@ -1,0 +1,45 @@
+<div fxLayout='row' fxLayoutGap='10px' fxLayoutAlign='center center' class="milk">
+  <div fxFlex='40%'>
+    <mat-card class='card'>
+      <mat-card-header class='heading'>
+        <mat-card-title>Calculate Milk Bill</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div fxLayout='column' fxLayoutGap='10px' fxLayoutAlign='center center'>
+          <form [formGroup]='calculateMilk'>
+            <mat-form-field appearance='outline'>
+              <mat-label>Month</mat-label>
+              <mat-select (selectionChange)='calcDays()' formControlName='month'>
+                <mat-option value='january'>january</mat-option>
+                <mat-option value='february'>february</mat-option>
+                <mat-option value='march'>march</mat-option>
+                <mat-option value='april'>april</mat-option>
+                <mat-option value='may'>may</mat-option>
+                <mat-option value='june'>june</mat-option>
+                <mat-option value='july'>july</mat-option>
+                <mat-option value='august'>august</mat-option>
+                <mat-option value='september'>september</mat-option>
+                <mat-option value='october'>october</mat-option>
+                <mat-option value='november'>november</mat-option>
+                <mat-option value='december'>december</mat-option>
+              </mat-select>
+              <mat-error>
+                <div *ngIf='month.invalid && month.errors.required'>required this field
+                </div>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class='full-width' appearance='outline'>
+              <mat-label>Rate</mat-label>
+              <input matInput type='number' placeholder='rate' formControlName='rate'>
+              <mat-error>
+                <div *ngIf='rate.invalid && rate.errors.required'>required this field</div>
+              </mat-error>
+            </mat-form-field>
+          </form>
+          <button mat-raised-button (click)='calculate()' color='primary'>Calculate</button>
+        </div>
+        <h1>Your Total Bill is: {{sum}}</h1>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
